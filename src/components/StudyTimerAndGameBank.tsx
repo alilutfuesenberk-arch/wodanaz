@@ -268,9 +268,9 @@ export const StudyTimerAndGameBank: React.FC<StudyTimerAndGameBankProps> = ({
   const levelInfo = getLevelInfo(bankState.totalPoints);
   const safeSessions = Array.isArray(bankState.sessions) ? bankState.sessions : [];
 
-  // ZORLAYICI PUAN SİSTEMİ:
-  // 1. Oyun Dakikası = 1:1 Birebir Eşitlik (1 Dk Çalışma = 1 Dk Oyun)
-  // 2. XP = 1 Dk Odak = +1 XP
+  // ZORLAYICI DİSİPLİN SİSTEMİ:
+  // 1. Oyun Dakikası = 3 Dk Ders = 1 Dk Oyun (3:1 Zorlayıcı Oran)
+  // 2. XP'den Oyun Süresine Dönüşüm: Yüksek Emek Kuralı (~50-70 XP = 1 Dk Oyun Süresi)
   // 3. Makul Katkılar: Kitap = +15 XP, Test = +10 XP, Yazılı = +15 XP, Çalışma = +5 XP
   const calculatePoints = (minutes: number, type: ActivityType) => {
     let pts = minutes * 1;
@@ -285,7 +285,8 @@ export const StudyTimerAndGameBank: React.FC<StudyTimerAndGameBankProps> = ({
     e.preventDefault();
     if (!newTitle.trim() || newDurationMin <= 0) return;
 
-    const earnedGameMin = newDurationMin;
+    // Zorlayıcı Oran: 3 Dk Çalışma = 1 Dk Oyun Süresi
+    const earnedGameMin = Math.floor(newDurationMin / 3);
     const calculatedPoints = calculatePoints(newDurationMin, newActivityType);
 
     const newSession: StudySession = {
@@ -349,11 +350,11 @@ export const StudyTimerAndGameBank: React.FC<StudyTimerAndGameBankProps> = ({
     soundFX.playPop();
   };
 
-  // Ödül Sandığı: Puan Takas İşlemleri (Zorlayıcı & Değerli)
+  // Ödül Sandığı: Puan Takas İşlemleri (Zorlayıcı & Yüksek Emek Değeri)
   const handleExchangePointsForStar = () => {
-    const cost = 200;
+    const cost = 400;
     if (bankState.totalPoints < cost) {
-      setRewardFeedback('Yıldız almak için en az 200 puana ihtiyacın var.');
+      setRewardFeedback('Yıldız almak için en az 400 XP puanına ihtiyacın var.');
       setTimeout(() => setRewardFeedback(null), 3000);
       return;
     }
@@ -371,7 +372,7 @@ export const StudyTimerAndGameBank: React.FC<StudyTimerAndGameBankProps> = ({
     if (onEarnStar) onEarnStar();
     soundFX.playCelebration();
     confetti({ particleCount: 35, spread: 55 });
-    setRewardFeedback('Tebrikler! 200 Puan harcayarak +1 Başarı Yıldızı kazandın! ⭐');
+    setRewardFeedback('Tebrikler! 400 XP harcayarak +1 Başarı Yıldızı kazandın! ⭐');
     setTimeout(() => setRewardFeedback(null), 3500);
   };
 
@@ -450,7 +451,7 @@ export const StudyTimerAndGameBank: React.FC<StudyTimerAndGameBankProps> = ({
                 </span>
               </div>
               <p className="text-2xs sm:text-xs text-purple-100 font-medium">
-                1 Dk Ders = 1 Dk Oyun · Disiplinli Puan Sistemi
+                ⚡ 3 Dk Ders = 1 Dk Oyun · Emek İsteyen Zorlu Puan & Oyun Sistemi
               </p>
             </div>
           </div>
@@ -561,10 +562,10 @@ export const StudyTimerAndGameBank: React.FC<StudyTimerAndGameBankProps> = ({
               <div className="bg-white px-3.5 py-2.5 rounded-xl border border-purple-200/90 text-xs text-slate-700 flex flex-wrap items-center justify-between gap-2 shadow-2xs">
                 <span className="font-extrabold text-purple-900 flex items-center gap-1.5 text-2xs sm:text-xs">
                   <Sparkles className="w-3.5 h-3.5 text-orange-500" />
-                  Kural: 1 Dk Ders = 1 Dk Oyun (1:1)
+                  Zorlayıcı Kural: 3 Dk Ders = 1 Dk Oyun (3:1)
                 </span>
                 <span className="text-2xs text-slate-500 font-semibold">
-                  1 Dk Odak = +1 XP · Kitap Okuma = +15 XP
+                  1 Dk Odak = +1 XP · Kitap Okuma = +15 XP · 50+ XP = 1 Dk Joker
                 </span>
               </div>
 
@@ -650,7 +651,7 @@ export const StudyTimerAndGameBank: React.FC<StudyTimerAndGameBankProps> = ({
                     </span>{' '}
                     ·{' '}
                     <span className="text-orange-600 font-extrabold">
-                      +{newDurationMin} Dk Oyun
+                      +{Math.floor(newDurationMin / 3)} Dk Oyun (3:1)
                     </span>
                   </div>
 
@@ -728,14 +729,19 @@ export const StudyTimerAndGameBank: React.FC<StudyTimerAndGameBankProps> = ({
                   Puan Takası
                 </h4>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  {/* Ödül 1: 200 Puan -> 1 Yıldız */}
+                <div className="p-3 bg-purple-50/80 rounded-xl border border-purple-200 text-purple-950 text-2xs font-semibold flex items-center gap-2">
+                  <span className="text-base shrink-0">⚡</span>
+                  <span><strong>Zorlayıcı Takas Kuralı:</strong> Oyun süresi kazanmak emek ve yüksek odaklanma ister. 50-70 XP harcayarak yalnızca 1 dakika joker oyun süresi açılabilir!</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                  {/* Ödül 1: 400 XP -> 1 Yıldız */}
                   <div className="p-3.5 rounded-xl bg-white border border-purple-200 shadow-2xs flex flex-col justify-between space-y-2">
                     <div>
                       <div className="flex items-center justify-between">
                         <span className="text-xl">🌟</span>
                         <span className="text-2xs font-black px-2 py-0.5 rounded bg-purple-100 text-purple-900">
-                          200 XP
+                          400 XP
                         </span>
                       </div>
                       <h5 className="font-extrabold text-xs text-slate-900 mt-1">+1 Başarı Yıldızı</h5>
@@ -746,58 +752,82 @@ export const StudyTimerAndGameBank: React.FC<StudyTimerAndGameBankProps> = ({
 
                     <button
                       onClick={handleExchangePointsForStar}
-                      disabled={bankState.totalPoints < 200}
+                      disabled={bankState.totalPoints < 400}
                       className="w-full py-1.5 bg-purple-600 hover:bg-purple-700 disabled:opacity-40 text-white font-bold rounded-lg text-xs transition-all cursor-pointer disabled:cursor-not-allowed"
                     >
-                      Al (200 XP)
+                      Al (400 XP)
                     </button>
                   </div>
 
-                  {/* Ödül 2: 250 Puan -> +15 Dk Joker Oyun */}
+                  {/* Ödül 2: 350 XP -> +5 Dk Acil Joker Oyun */}
+                  <div className="p-3.5 rounded-xl bg-white border border-amber-200 shadow-2xs flex flex-col justify-between space-y-2">
+                    <div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xl">⏱️</span>
+                        <span className="text-2xs font-black px-2 py-0.5 rounded bg-amber-100 text-amber-900">
+                          350 XP
+                        </span>
+                      </div>
+                      <h5 className="font-extrabold text-xs text-slate-900 mt-1">+5 Dk Acil Joker</h5>
+                      <p className="text-2xs text-slate-500">
+                        350 XP ile acil 5 dakika oyun hakkı aç.
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={() => handleExchangePointsForGameTime(5, 350)}
+                      disabled={bankState.totalPoints < 350}
+                      className="w-full py-1.5 bg-amber-500 hover:bg-amber-600 disabled:opacity-40 text-white font-bold rounded-lg text-xs transition-all cursor-pointer disabled:cursor-not-allowed"
+                    >
+                      Al (350 XP)
+                    </button>
+                  </div>
+
+                  {/* Ödül 3: 600 XP -> +10 Dk Standart Joker */}
                   <div className="p-3.5 rounded-xl bg-white border border-orange-200 shadow-2xs flex flex-col justify-between space-y-2">
                     <div>
                       <div className="flex items-center justify-between">
                         <span className="text-xl">🎮</span>
                         <span className="text-2xs font-black px-2 py-0.5 rounded bg-orange-100 text-orange-900">
-                          250 XP
+                          600 XP
                         </span>
                       </div>
-                      <h5 className="font-extrabold text-xs text-slate-900 mt-1">+15 Dk Joker Oyun</h5>
+                      <h5 className="font-extrabold text-xs text-slate-900 mt-1">+10 Dk Standart Joker</h5>
                       <p className="text-2xs text-slate-500">
-                        Puanlarını acil oyun süresine çevir.
+                        600 XP karşılığında 10 dk oyun süresi.
                       </p>
                     </div>
 
                     <button
-                      onClick={() => handleExchangePointsForGameTime(15, 250)}
-                      disabled={bankState.totalPoints < 250}
+                      onClick={() => handleExchangePointsForGameTime(10, 600)}
+                      disabled={bankState.totalPoints < 600}
                       className="w-full py-1.5 bg-orange-500 hover:bg-orange-600 disabled:opacity-40 text-white font-bold rounded-lg text-xs transition-all cursor-pointer disabled:cursor-not-allowed"
                     >
-                      Al (250 XP)
+                      Al (600 XP)
                     </button>
                   </div>
 
-                  {/* Ödül 3: 450 Puan -> +30 Dk Süper Joker */}
+                  {/* Ödül 4: 1100 XP -> +20 Dk Süper Joker */}
                   <div className="p-3.5 rounded-xl bg-white border border-purple-200 shadow-2xs flex flex-col justify-between space-y-2">
                     <div>
                       <div className="flex items-center justify-between">
                         <span className="text-xl">🚀</span>
                         <span className="text-2xs font-black px-2 py-0.5 rounded bg-purple-100 text-purple-900">
-                          450 XP
+                          1100 XP
                         </span>
                       </div>
-                      <h5 className="font-extrabold text-xs text-slate-900 mt-1">+30 Dk Süper Joker</h5>
+                      <h5 className="font-extrabold text-xs text-slate-900 mt-1">+20 Dk Süper Joker</h5>
                       <p className="text-2xs text-slate-500">
-                        Birikmiş puanlarınla ekstra oyun aç.
+                        1100 XP biriktirerek 20 dk ekstra oyun aç.
                       </p>
                     </div>
 
                     <button
-                      onClick={() => handleExchangePointsForGameTime(30, 450)}
-                      disabled={bankState.totalPoints < 450}
+                      onClick={() => handleExchangePointsForGameTime(20, 1100)}
+                      disabled={bankState.totalPoints < 1100}
                       className="w-full py-1.5 bg-linear-to-r from-purple-600 to-orange-500 hover:from-purple-700 hover:to-orange-600 disabled:opacity-40 text-white font-bold rounded-lg text-xs transition-all cursor-pointer disabled:cursor-not-allowed"
                     >
-                      Al (450 XP)
+                      Al (1100 XP)
                     </button>
                   </div>
                 </div>

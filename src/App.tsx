@@ -61,7 +61,7 @@ export default function App() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [lastUploadedImage, setLastUploadedImage] = useState<string | null>(null);
 
-  const [selectedGrade, setSelectedGrade] = useState<string>('Tüm Ortaokul (Otomatik 5-8. Sınıf)');
+  const [selectedGrade, setSelectedGrade] = useState<string>('5. Sınıf');
   const [selectedSubject, setSelectedSubject] = useState<string>('Tüm Dersler (Otomatik Tanı)');
 
   // Persistence for stars and homework history
@@ -402,7 +402,7 @@ export default function App() {
         )}
 
         {/* ======================================================== */}
-        {/* 3. ANA KISIM: TEST SONUÇLARI KONTROLÜ                   */}
+        {/* 3. ANA KISIM: TEST UZMANI                               */}
         {/* ======================================================== */}
         {activeMainTab === 'test_results' && (
           <TestResultsCenter

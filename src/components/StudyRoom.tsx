@@ -55,93 +55,81 @@ interface SubjectItem {
 }
 
 const AVAILABLE_SUBJECTS: SubjectItem[] = [
-  { id: 'Matematik', name: 'Matematik', shortName: 'Matematik', icon: '📐', tag: 'LGS & MEB Müfredatı' },
-  { id: 'Fen Bilimleri', name: 'Fen Bilimleri', shortName: 'Fen', icon: '🔬', tag: 'Deneyler & Basınç' },
-  { id: 'Türkçe', name: 'Türkçe', shortName: 'Türkçe', icon: '📖', tag: 'Paragraf & Dil Bilgisi' },
-  {
-    id: 'T.C. İnkılap Tarihi ve Atatürkçülük / Sosyal Bilgiler',
-    name: 'İnkılap Tarihi / Sosyal',
-    shortName: 'İnkılap / Sosyal',
-    icon: '🏛️',
-    tag: 'Milli Mücadele & Tarih',
-  },
-  { id: 'İngilizce', name: 'İngilizce', shortName: 'İngilizce', icon: '🌍', tag: 'Vocabulary & Reading' },
-  { id: 'Din Kültürü ve Ahlak Bilgisi', name: 'Din Kültürü', shortName: 'Din Kültürü', icon: '🕌', tag: 'Kaza & Kader' },
-  { id: 'Kitap Okuma & Anlama', name: 'Kitap Okuma & Anlama', shortName: 'Kitap Okuma', icon: '📚', tag: '+15 XP Bonus', isReading: true },
-  { id: 'LGS Deneme & Mantık Muhakeme', name: 'LGS Karma Deneme', shortName: 'LGS Deneme', icon: '🧠', tag: 'Tüm Branşlar' },
+  { id: 'Matematik', name: 'Matematik', shortName: 'Matematik', icon: '📐', tag: '5. Sınıf MEB Müfredatı' },
+  { id: 'Fen Bilimleri', name: 'Fen Bilimleri', shortName: 'Fen', icon: '🔬', tag: 'Güneş, Dünya ve Canlılar' },
+  { id: 'Türkçe', name: 'Türkçe', shortName: 'Türkçe', icon: '📖', tag: 'Paragraf & Sözcükte Anlam' },
+  { id: 'Sosyal Bilgiler', name: 'Sosyal Bilgiler', shortName: 'Sosyal', icon: '🌍', tag: 'Uygarlıklar & Haritalar' },
+  { id: 'İngilizce', name: 'İngilizce', shortName: 'İngilizce', icon: '🇬🇧', tag: 'Hello & Daily Routine' },
+  { id: 'Din Kültürü', name: 'Din Kültürü', shortName: 'Din Kültürü', icon: '🕌', tag: 'Allah İnancı & Adap' },
+  { id: 'Kitap Okuma & Anlama', name: 'Kitap Okuma & Anlama', shortName: 'Kitap Okuma', icon: '📚', tag: 'Okuma Alışkanlığı', isReading: true },
+  { id: '5. Sınıf Deneme & Pratik', name: '5. Sınıf Deneme', shortName: 'Deneme', icon: '⭐', tag: 'Tüm 5. Sınıf Dersleri' },
 ];
 
 const MEB_SUBJECT_TOPICS: Record<string, string[]> = {
   Matematik: [
-    '1. Ünite: Çarpanlar ve Katlar / EBOB-EKOK',
-    '2. Ünite: Üslü İfadeler ve Bilimsel Gösterim',
-    '3. Ünite: Kareköklü İfadeler ve Gerçek Sayılar',
-    '4. Ünite: Veri Analizi (Daire ve Sütun Grafikleri)',
-    '5. Ünite: Basit Olayların Olma Olasılığı',
-    '6. Ünite: Cebirsel İfadeler ve Özdeşlikler',
-    '7. Ünite: Doğrusal Denklemler ve Eğim',
-    '8. Ünite: Eşitsizlikler ve Sayı Doğrusu Modelleri',
-    '9. Ünite: Üçgenler ve Pisagor Bağıntısı',
-    '10. Ünite: Geometrik Cisimler ve Dönüşüm Geometrisi',
+    '1. Ünite: Doğal Sayılar ve Doğal Sayılarla İşlemler (Milyonlar, Çarpma, Bölme)',
+    '2. Ünite: Kesirler ve Kesirlerle İşlemler (Birim Kesir, Tam/Bileşik, Toplama-Çıkarma)',
+    '3. Ünite: Ondalık Gösterim ve Yüzdeler (Basamak Değerleri ve % Hesaplama)',
+    '4. Ünite: Temel Geometrik Kavramlar, Üçgenler ve Dörtgenler (Açılar, İç Açı Toplamı)',
+    '5. Ünite: Veri İşleme / Uzunluk ve Zaman Ölçme (Sütun Grafiği, Saat-Dakika)',
+    '6. Ünite: Alan Ölçme ve Geometrik Cisimler (Dikdörtgenin Alanı, Prizmalar)',
   ],
   'Fen Bilimleri': [
-    '1. Ünite: Mevsimler ve İklim (Eksen Eğikliği)',
-    '2. Ünite: DNA ve Genetik Kod (Kalıtım ve Çaprazlama)',
-    '3. Ünite: Basınç (Katı, Sıvı ve Gaz Basıncı Deneyleri)',
-    '4. Ünite: Madde ve Endüstri (Periyodik Sistem, Asitler-Bazlar)',
-    '5. Ünite: Basit Makineler (Kaldıraç, Makara, Eğik Düzlem)',
-    '6. Ünite: Canlılar ve Enerji İlişkileri (Besin Zinciri & Fotosentez)',
-    '7. Ünite: Elektrik Yükleri ve Elektrik Enerjisi',
+    '1. Ünite: Güneş, Dünya ve Ay (Güneşin Yapısı, Ayın Evreleri, Kraterler)',
+    '2. Ünite: Canlılar Dünyası (Mikroskobik Canlılar, Mantarlar, Bitkiler, Hayvanlar)',
+    '3. Ünite: Kuvvetin Ölçülmesi ve Sürtünme (Dinamometre, Newton, Sürtünme Kuvveti)',
+    '4. Ünite: Madde ve Değişim (Hâl Değişimleri, Isı ve Sıcaklık, Genleşme-Büzülme)',
+    '5. Ünite: Işığın Yayılması (Doğrusal Yayılma, Düzgün/Dağınık Yansıma, Tam Gölge)',
+    '6. Ünite: İnsan ve Çevre (Biyoçeşitlilik, Çevre Kirliliği, Doğal Afetler)',
+    '7. Ünite: Elektrik Devre Elemanları (Basit Devre Sembolleri, Ampul Parlaklığı)',
   ],
   Türkçe: [
-    '1. Ünite: Fiilimsiler (İsim-Fiil, Sıfat-Fiil, Zarf-Fiil)',
-    '2. Ünite: Sözcükte ve Cümlede Anlam / Örtülü Anlam',
-    '3. Ünite: Cümlenin Ögeleri ve Cümle Vurgusu',
-    '4. Ünite: Paragrafta Ana Fikir ve Çıkarım Soruları',
-    '5. Ünite: Metin Türleri ve Söz Sanatları',
-    '6. Ünite: Yazım Kuralları ve Noktalama İşaretleri',
-    '7. Ünite: Cümle Türleri ve Anlatım Bozuklukları',
-    '8. Ünite: Mantık Muhakeme ve Sözel Akıl Yürütme',
+    '1. Ünite: Sözcükte Anlam (Gerçek, Mecaz, Terim, Eş ve Zıt Anlam, Eş Sesli)',
+    '2. Ünite: Cümlede Anlam (Neden-Sonuç, Amaç-Sonuç, Öznel ve Nesnel Yargılar)',
+    '3. Ünite: Paragrafta Anlam ve Yapı (Ana Fikir, Yardımcı Fikirler, Konu, Başlık)',
+    '4. Ünite: Metin Türleri ve Söz Sanatları (Hikâye, Masal, Fabl, Kişileştirme, Benzetme)',
+    '5. Ünite: Dil Bilgisi - Kökler ve Ekler (İsim/Fiil Kökü, Yapım ve Çekim Ekleri)',
+    '6. Ünite: Yazım Kuralları ve Noktalama İşaretleri (Büyük Harfler, de/ki Yazımı, Noktalama)',
   ],
-  'T.C. İnkılap Tarihi ve Atatürkçülük / Sosyal Bilgiler': [
-    '1. Ünite: Bir Kahraman Doğuyor (Mustafa Kemal’in Hayatı)',
-    '2. Ünite: Milli Uyanış (I. Dünya Savaşı ve Mondros)',
-    '3. Ünite: Milli Bir Destan: Ya İstiklal Ya Ölüm! (Cepheler)',
-    '4. Ünite: Atatürkçülük ve Çağdaşlaşan Türkiye (İnkılaplar)',
-    '5. Ünite: Demokratikleşme Çabaları ve Çok Partili Hayat',
-    '6. Ünite: Atatürk Dönemi Türk Dış Politikası',
-    '7. Ünite: Atatürk’ün Ölümü ve Sonrası',
+  'Sosyal Bilgiler': [
+    '1. Ünite: Birey ve Toplum (Haklarımız, Rollerimiz, Çocuk Hakları Sözleşmesi)',
+    '2. Ünite: Kültür ve Miras (Anadolu ve Mezopotamya Uygarlıkları, Tarihî Mirasımız)',
+    '3. Ünite: İnsanlar, Yerler ve Çevreler (Fiziki Harita, İklim Tipleri, Doğal Afetler)',
+    '4. Ünite: Bilim, Teknoloji ve Toplum (Güvenilir Bilgiye Ulaşma, Mucitler, Telif Hakkı)',
+    '5. Ünite: Üretim, Dağıtım ve Tüketim (Bölgelerimizin Ekonomisi, Bilinçli Tüketici)',
+    '6. Ünite: Etkin Vatandaşlık (Yönetim Birimleri: Valilik, Kaymakamlık, Belediye)',
+    '7. Ünite: Küresel Bağlantılar (Dünya Çocukları, Kültür Köprüleri, 23 Nisan)',
   ],
   İngilizce: [
-    '1. Unit: Friendship (Accepting & Refusing, Qualities)',
-    '2. Unit: Teen Life (Daily Routines & Preferences)',
-    '3. Unit: In The Kitchen (Cooking Steps & Recipes)',
-    '4. Unit: On The Phone (Phone Conversations & Messages)',
-    '5. Unit: The Internet (Online Safety & Habits)',
-    '6. Unit: Adventures (Extreme Sports & Comparisons)',
-    '7. Unit: Tourism (Holiday Types & Historical Sites)',
-    '8. Unit: Chores (Household Responsibilities & Rules)',
-    '9. Unit: Science (Scientific Inventions & Pioneers)',
-    '10. Unit: Natural Forces (Disasters & Environment)',
+    'Unit 1: Hello & School Subjects (Greetings, Countries, Nationalities)',
+    'Unit 2: My Town (Places in Town, Prepositions, Giving Directions)',
+    'Unit 3: Games and Hobbies (Traditional Games, Can/Can’t, Origami)',
+    'Unit 4: My Daily Routine (Telling the Time, Daily Routine Verbs)',
+    'Unit 5: Health & Illnesses (Illnesses, Should/Shouldn’t, Advice)',
+    'Unit 6: Movies & Expressing Opinions (Movie Genres, Characters)',
+    'Unit 7: Party Time (Months, Ordinal Numbers, Invitation Cards)',
+    'Unit 8: Fitness & Sports (Fitness Activities, Suggestions with Let’s)',
+    'Unit 9: The Animal Shelter (Animals, Present Continuous Tense)',
+    'Unit 10: Festivals & Celebrations (National Festivals, Numbers up to 1000)',
   ],
-  'Din Kültürü ve Ahlak Bilgisi': [
-    '1. Ünite: Kader İnancı (Kaza ve Kader, İnsanın İradesi)',
-    '2. Ünite: Zekat ve Sadaka İbadeti (Paylaşma ve Yardımlaşma)',
-    '3. Ünite: Din ve Hayat (Dinin Temel Gayesi: Can, Mal, Akıl)',
-    '4. Ünite: Hz. Muhammed’in Örnekliği (Doğruluk ve Merhamet)',
-    '5. Ünite: İslam Dini ve Temel Kaynakları (Kur’an ve Sünnet)',
+  'Din Kültürü': [
+    '1. Ünite: Allah İnancı (Tevhid, Esma-i Hüsna, İhlas Suresi)',
+    '2. Ünite: Ramazan ve Oruç (Oruç İbadeti, Sahur, İmsak, İftar, Teravih)',
+    '3. Ünite: Adap ve Nezaket (Selamlaşma, Sofra Adabı, Nezaket Kuralları)',
+    '4. Ünite: Hz. Muhammed ve Aile Hayatı (Aile İçi Sevgi, Saygı ve İstişare)',
+    '5. Ünite: Çevremizde Dinin İzleri (Mimarimizde Camiler, Kubbe, Minber, Mihrap)',
   ],
   'Kitap Okuma & Anlama': [
-    '1. Aşama: Serbest Kitap Okuma (25-30 Dk)',
-    '2. Aşama: LGS Paragraf Hızı ve Okuduğunu Anlama',
-    '3. Aşama: Dünya ve Türk Klasikleri Roman Tahlili',
-    '4. Aşama: Özet Çıkarma ve Ana Düşünce Belirleme',
+    '1. Aşama: 5. Sınıf Serbest Kitap Okuma (25-30 Dk)',
+    '2. Aşama: Okuduğunu Anlama ve Sözcük Dağarcığını Genişletme',
+    '3. Aşama: 5. Sınıf Çocuk Edebiyatı Masal ve Hikâye Tahlili',
+    '4. Aşama: Kısa Özet Çıkarma ve Ana Fikir Belirleme',
   ],
-  'LGS Deneme & Mantık Muhakeme': [
-    '1. Bölüm: LGS Sayısal (Matematik + Fen) Denemesi',
-    '2. Bölüm: LGS Sözel (Türkçe + Sosyal + Din + İngilizce)',
-    '3. Bölüm: Tam Kapsamlı LGS Türkiye Geneli Denemesi',
-    '4. Bölüm: Mantık Muhakeme & Yeni Nesil Soru Kampı',
+  '5. Sınıf Deneme & Pratik': [
+    '1. Bölüm: 5. Sınıf Sayısal Değerlendirme (Matematik + Fen)',
+    '2. Bölüm: 5. Sınıf Sözel Değerlendirme (Türkçe + Sosyal + İngilizce + Din)',
+    '3. Bölüm: 5. Sınıf MEB 1. Dönem Genel Tekrar Sınavı',
+    '4. Bölüm: 5. Sınıf MEB 2. Dönem Yıl Sonu Kazanım Denemesi',
   ],
 };
 
@@ -432,8 +420,8 @@ export const StudyRoom: React.FC<StudyRoomProps> = ({
     });
 
     const durationMin = Math.max(1, Math.round(studyTimerSeconds / 60));
-    // 1 Dakika Çalışma = 1 Dakika Oyun Hakkı (Birebir 1:1 Eşitlik)
-    const gameMinutesEarned = durationMin;
+    // Zorlayıcı Oran: 3 Dakika Ders Çalışma = 1 Dakika Oyun Hakkı (3:1 Zorlu Sistem)
+    const gameMinutesEarned = Math.floor(durationMin / 3);
 
     // Zorlayıcı & Dengeli Puan Sistemi: 1 Dk = +1 XP, Kitap Okuma = +15 XP, Oturum Tamamlama = +5 XP
     const readingBonus = isReadingSession ? 15 : 0;
@@ -492,66 +480,42 @@ export const StudyRoom: React.FC<StudyRoomProps> = ({
     <div className={`bg-white rounded-3xl w-full border border-purple-200 overflow-hidden flex flex-col ${
       embedded ? 'shadow-2xs' : 'max-w-3xl max-h-[92vh] shadow-2xl'
     }`}>
-      {/* Top Header - Lilac and Orange Harmony */}
-      <div className="px-4 sm:px-6 py-3 bg-linear-to-r from-purple-700 via-violet-600 to-orange-500 text-white flex items-center justify-between shadow-xs shrink-0">
-        <div className="flex items-center gap-2.5">
+      {/* Simplified, Clean Header */}
+      <div className="px-4 sm:px-6 py-3.5 bg-purple-700 text-white flex items-center justify-between shadow-xs shrink-0 rounded-t-3xl border-b border-purple-800/40 font-['Plus_Jakarta_Sans',sans-serif]">
+        <div className="flex items-center gap-3">
           {onBack && (
             <button
               onClick={() => {
                 soundFX.playPop();
                 onBack();
               }}
-              className="mr-1 px-2.5 py-1 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-bold transition-all flex items-center gap-1 cursor-pointer"
-              title="Ana Sayfaya Dön"
+              className="p-1.5 rounded-xl bg-white/15 hover:bg-white/25 active:scale-95 text-white transition-all cursor-pointer"
+              title="Geri Dön"
             >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Geri</span>
+              <ArrowLeft className="w-4 h-4" />
             </button>
           )}
-          <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center text-lg shrink-0">
+          <div className="w-8 h-8 rounded-xl bg-white/15 flex items-center justify-center text-base shrink-0">
             🎯
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h3 className="font-extrabold text-sm sm:text-base">
-                Çalışma Alanım
-              </h3>
-              <span className="text-3xs font-extrabold px-2 py-0.5 rounded-full bg-white/20 text-orange-100 uppercase tracking-wider hidden sm:inline">
-                MEB Odaklanma Alanı
-              </span>
-            </div>
-            <p className="text-3xs text-purple-100 font-medium">
-              1 Dk Ders = 1 Dk Oyun Hakkı 🎮
-            </p>
-          </div>
+          <h2
+            style={{ fontFamily: "'Fredoka', 'Plus Jakarta Sans', sans-serif" }}
+            className="font-extrabold text-xl sm:text-2xl tracking-wide text-white drop-shadow-xs"
+          >
+            Çalışma Alanım
+          </h2>
         </div>
 
-        <div className="flex items-center gap-2">
-          {/* Kumbaram badge */}
-          <div
-            onClick={() => {
-              soundFX.playPop();
-              onOpenGameBank();
-            }}
-            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition-all cursor-pointer border border-white/20"
-            title="Mevcut Oyun Süresi Kumbaram"
-          >
-            <Gamepad2 className="w-3.5 h-3.5 text-orange-200" />
-            <span>Kumbaram:</span>
-            <span className="font-extrabold bg-white text-orange-900 px-1 py-0.2 rounded text-2xs">
-              {availableGameMinutes} dk
-            </span>
-          </div>
-
+        <div className="flex items-center gap-2.5">
           {/* Ambient Sound Toggle */}
           <button
             onClick={toggleAmbientSound}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
               ambientAudioActive
                 ? 'bg-emerald-500 text-white shadow-xs'
                 : 'bg-white/15 hover:bg-white/25 text-white'
             }`}
-            title={ambientAudioActive ? 'Odak sesini durdur' : 'Yumuşak odaklanma sesini aç'}
+            title={ambientAudioActive ? 'Odak sesini durdur' : 'Odaklanma sesini aç'}
           >
             <Headphones className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">
@@ -566,7 +530,7 @@ export const StudyRoom: React.FC<StudyRoomProps> = ({
                 teacherVoice.stop();
                 onClose();
               }}
-              className="p-1 rounded-lg hover:bg-white/20 transition-colors text-white cursor-pointer"
+              className="p-1.5 rounded-xl hover:bg-white/20 transition-colors text-white cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -1133,7 +1097,7 @@ export const StudyRoom: React.FC<StudyRoomProps> = ({
                     +{finishedSummary.gameMinutes} dk
                   </span>
                   <span className="text-3xs text-orange-700 font-bold block">
-                    (1:1 Tam Eşitlik)
+                    (3:1 Zorlayıcı Oran)
                   </span>
                 </div>
               </div>

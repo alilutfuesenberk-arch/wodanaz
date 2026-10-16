@@ -301,8 +301,8 @@ export const AnalysisDashboard: React.FC<AnalysisDashboardProps> = ({
           evalTestCompletedBonus +
           evalCorrectBonus +
           evalReadingBonus;
-        // 1 study minute = 1 game minute! (Birebir 1:1 Eşitlik)
-        const evalEarnedGameMinutes = evalStudyDurationMin;
+        // Zorlayıcı Oran: 3 Dk Çalışma = 1 Dk Oyun (3:1)
+        const evalEarnedGameMinutes = Math.floor(evalStudyDurationMin / 3);
 
         return (
           <div className="bg-linear-to-r from-emerald-600 via-teal-600 to-amber-600 rounded-3xl p-5 sm:p-6 text-white shadow-md relative overflow-hidden">
@@ -313,14 +313,14 @@ export const AnalysisDashboard: React.FC<AnalysisDashboardProps> = ({
                     Ödev Teslim Değerlendirmesi
                   </span>
                   <span className="text-xs text-emerald-100 font-bold flex items-center gap-1">
-                    <Sparkles className="w-3.5 h-3.5" /> Birebir Oyun Hakkı (1 Dk Ders = 1 Dk Oyun)
+                    <Sparkles className="w-3.5 h-3.5" /> Zorlayıcı Oran (3 Dk Ders = 1 Dk Oyun)
                   </span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-black flex items-center gap-2">
                   <span>🎮 +{evalEarnedGameMinutes} Dakika Oyun Oynama Hakkı Kazandın!</span>
                 </h3>
                 <p className="text-xs sm:text-sm text-emerald-50 leading-relaxed max-w-2xl font-medium">
-                  Değerlendirme formülü: <strong>1 Dk Çalışma = 1 Dk Oyun</strong> ({evalEarnedGameMinutes} dk çalışma = {evalEarnedGameMinutes} dk oyun) | <strong>Puan</strong>: Süre (+{evalStudyDurationMin * 2}p) + Zorluk (+{evalDifficultyBonus}p) + Teslim (+{evalTestCompletedBonus}p) + {scoreSummary.correctCount} Doğru (+{evalCorrectBonus}p) {isReading ? '+ 📖 Kitap Kurdu Bonusu (+50p)' : ''} = <strong>Toplam {evalTotalPoints} Puan</strong>!
+                  Değerlendirme formülü: <strong>3 Dk Çalışma = 1 Dk Oyun</strong> ({evalStudyDurationMin} dk çalışma = {evalEarnedGameMinutes} dk oyun) | <strong>Puan</strong>: Süre (+{evalStudyDurationMin * 2}p) + Zorluk (+{evalDifficultyBonus}p) + Teslim (+{evalTestCompletedBonus}p) + {scoreSummary.correctCount} Doğru (+{evalCorrectBonus}p) {isReading ? '+ 📖 Kitap Kurdu Bonusu (+50p)' : ''} = <strong>Toplam {evalTotalPoints} XP</strong>!
                 </p>
               </div>
 

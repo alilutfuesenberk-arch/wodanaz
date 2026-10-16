@@ -1,6 +1,6 @@
 import { HomeworkAnalysisResult } from '../types';
 
-// Helper to create an SVG paper sheet data URL for middle school worksheets
+// Helper to create an SVG paper sheet data URL for 5th grade worksheets
 function createSampleWorksheetSVG(
   title: string,
   grade: string,
@@ -9,7 +9,6 @@ function createSampleWorksheetSVG(
 ): string {
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1050" width="800" height="1050" style="background:#fffaf0; font-family:'Segoe UI',sans-serif;">
-      <!-- Grid line background for authentic middle school notebook feel -->
       <defs>
         <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
           <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1e6d0" stroke-width="1"/>
@@ -23,13 +22,13 @@ function createSampleWorksheetSVG(
       
       <!-- School Header Box -->
       <rect x="90" y="30" width="670" height="110" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
-      <text x="425" y="65" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">MEB ATATÜRK ORTAOKULU ÇALIŞMA YAPRAĞI</text>
+      <text x="425" y="65" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">MEB 5. SINIF ÇALIŞMA YAPRAĞI</text>
       <text x="425" y="90" text-anchor="middle" font-size="16" font-weight="600" fill="#2563eb">${grade} - ${subject}: ${title}</text>
       
       <line x1="110" y1="105" x2="740" y2="105" stroke="#e2e8f0" stroke-width="1"/>
-      <text x="110" y="125" font-size="13" fill="#64748b">Adı Soyadı: <tspan font-weight="bold" fill="#0f172a">Eren Deniz Yılmaz</tspan></text>
-      <text x="350" y="125" font-size="13" fill="#64748b">Sınıf / No: <tspan font-weight="bold" fill="#0f172a">${grade} / 418</tspan></text>
-      <text x="560" y="125" font-size="13" fill="#64748b">Tarih: <tspan font-weight="bold" fill="#0f172a">Güz Dönemi</tspan></text>
+      <text x="110" y="125" font-size="13" fill="#64748b">Öğrenci: <tspan font-weight="bold" fill="#0f172a">Eren Deniz Yılmaz</tspan></text>
+      <text x="350" y="125" font-size="13" fill="#64748b">Sınıf: <tspan font-weight="bold" fill="#0f172a">5. Sınıf</tspan></text>
+      <text x="560" y="125" font-size="13" fill="#64748b">Dönem: <tspan font-weight="bold" fill="#0f172a">Güz Dönemi</tspan></text>
 
       <!-- Questions -->
       ${questions
@@ -39,7 +38,7 @@ function createSampleWorksheetSVG(
           <g transform="translate(90, ${yBase})">
             <!-- Question Box -->
             <rect x="0" y="0" width="670" height="150" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
-            <circle cx="28" cy="30" r="16" fill="#3b82f6" />
+            <circle cx="28" cy="30" r="16" fill="#7c3aed" />
             <text x="28" y="36" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">${index + 1}</text>
             
             <text x="55" y="34" font-size="14" font-weight="600" fill="#1e293b">${item.q}</text>
@@ -55,13 +54,12 @@ function createSampleWorksheetSVG(
                   ${
                     isSelected
                       ? `
-                    <!-- Hand-drawn pencil circle over student's answer -->
-                    <ellipse cx="-12" cy="-4" rx="13" ry="11" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="40" stroke-dashoffset="2" transform="rotate(-6 -12 -4)"/>
+                    <ellipse cx="-12" cy="-4" rx="13" ry="11" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="40" stroke-dashoffset="2" transform="rotate(-6 -12 -4)"/>
                   `
                       : ''
                   }
                   <text x="-12" y="0" text-anchor="middle" font-size="13" font-weight="bold" fill="${
-                    isSelected ? '#1d4ed8' : '#64748b'
+                    isSelected ? '#6b21a8' : '#64748b'
                   }">${letter})</text>
                   <text x="5" y="0" font-size="13" fill="#334155">${opt}</text>
                 </g>
@@ -75,7 +73,7 @@ function createSampleWorksheetSVG(
 
       <!-- Teacher Note Box at bottom -->
       <rect x="90" y="900" width="670" height="90" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
-      <text x="110" y="930" font-size="14" font-weight="bold" fill="#1e40af">Rehber Öğretmen Değerlendirmesi:</text>
+      <text x="110" y="930" font-size="14" font-weight="bold" fill="#1e40af">5. Sınıf Rehber Öğretmen Değerlendirmesi:</text>
       <text x="110" y="955" font-size="13" fill="#3b82f6">Tüm adımları dikkatle kontrol edelim ve alternatif çözüm yollarını mutlaka inceleyelim.</text>
     </svg>
   `;
@@ -84,28 +82,28 @@ function createSampleWorksheetSVG(
 
 export const SAMPLE_HOMEWORKS: HomeworkAnalysisResult[] = [
   {
-    id: 'sample-7-math-rational',
-    date: '13 Ekim 2026',
-    title: '7. Sınıf Matematik - Rasyonel Sayılarla İşlemler ve Problem Çözümü',
+    id: 'sample-5-math-fractions',
+    date: '14 Ekim 2026',
+    title: '5. Sınıf Matematik - Doğal Sayılar ve Kesir Problemleri',
     subject: 'Matematik',
-    gradeLevel: '7. Sınıf',
+    gradeLevel: '5. Sınıf',
     overallFeedback:
-      'Tebrikler canım öğrencim! 1. sorudaki işlem önceliğini ve payda eşitlemeyi kusursuz tamamladın. 2. soruda ise depodaki artış miktarını hesaplarken kesirlerin farkını alma adımında acele etmişsin. Sorunun farklı çözüm yollarını (Cebirsel, Model Çizme ve LGS Pratik Taktik) aşağıdan inceleyebilirsin!',
+      'Tebrikler canım 5. sınıf öğrencim! 1. soruda milyonlu doğal sayıların basamak ve bölüklerini kusursuz belirledin. 2. sorudaki kesir probleminde ise payda eşitleme adımında acele etmişsin. Aşağıdaki adım adım çözümü ve görsel model yolunu inceleyerek eksiğini hemen tamamlayabilirsin!',
     imageUrl: createSampleWorksheetSVG(
-      'Rasyonel Sayılarla İşlemler',
-      '7. Sınıf',
+      'Doğal Sayılar ve Kesirler',
+      '5. Sınıf',
       'Matematik',
       [
         {
-          q: '(-2/3) + (5/6) işleminin en sade sonucu kaçtır?',
-          opts: ['1/6', '1/3', '7/6', '-1/6'],
+          q: '72 400 085 sayısının milyonlar bölüğündeki sayı ile birler basamağındaki rakamın toplamı kaçtır?',
+          opts: ['77', '72', '80', '95'],
           studentChoice: 'A',
           correctChoice: 'A',
         },
         {
-          q: 'Bir su deposunun 3/5\'i doludur. Depoya 60 litre su eklendiğinde deponun 3/4\'ü doluyor. Deponun tamamı kaç litredir?',
-          opts: ['300 L', '400 L', '450 L', '500 L'],
-          studentChoice: 'A', // Mistake!
+          q: 'Ali bir hikâye kitabının 1. gün 2/7\'sini, 2. gün 3/14\'ünü okumuştur. Ali kitabın toplam kaçta kaçını okumuştur?',
+          opts: ['5/21', '7/14', '5/14', '1/7'],
+          studentChoice: 'C', // Student mistake
           correctChoice: 'B',
         },
       ]
@@ -120,214 +118,95 @@ export const SAMPLE_HOMEWORKS: HomeworkAnalysisResult[] = [
     questions: [
       {
         questionNumber: 1,
-        questionText: '(-2/3) + (5/6) işleminin en sade sonucu aşağıdakilerden hangisidir?',
-        options: ['A) 1/6', 'B) 1/3', 'C) 7/6', 'D) -1/6'],
-        studentAnswer: 'A) 1/6',
-        correctAnswer: 'A) 1/6',
+        questionText: '72 400 085 sayısının milyonlar bölüğündeki sayı ile birler basamağındaki rakamın toplamı kaçtır?',
+        options: ['A) 77', 'B) 72', 'C) 80', 'D) 95'],
+        studentAnswer: 'A) 77',
+        correctAnswer: 'A) 77',
         isCorrect: true,
-        topic: 'Rasyonel Sayılarda Toplama',
+        topic: 'Doğal Sayılarda Basamak ve Bölükler',
         teacherLesson:
-          'Harikasın! Rasyonel sayılarda toplama yaparken ilk iş paydaları eşitlemektir. (-2/3) kesrini 2 ile genişleterek (-4/6) yaptın ve (-4/6) + (5/6) = 1/6 sonucuna doğru ulaştın.',
+          'Harikasın! 72 400 085 sayısını incelediğimizde: Milyonlar bölüğündeki sayı 72’dir. Birler basamağındaki rakam ise 5’tir. 72 + 5 = 77 sonucuna doğru ulaştın!',
         stepByStepSolution: [
-          '1. Adım: Paydaları inceleyelim (3 ve 6). Ortak kat 6 olduğu için birinci kesri 2 ile genişletiriz: (-2 x 2) / (3 x 2) = -4/6.',
-          '2. Adım: Ortak paydada payları toplarız: (-4 + 5) / 6 = +1/6.',
-          '3. Adım: Kesir zaten en sade halde olduğundan doğru cevap 1/6\'dır.',
+          '1. Adım: Sayıyı bölüklerine ayıralım: [72] milyonlar bölüğü, [400] binler bölüğü, [085] birler bölüğü.',
+          '2. Adım: Milyonlar bölüğündeki sayı 72’dir.',
+          '3. Adım: Birler basamağındaki rakam en sağdaki 5’tir.',
+          '4. Adım: 72 + 5 = 77.',
         ],
         alternativeSolutions: [
           {
-            methodTitle: '1. Yol: Ortak Paydada Eşitleme (Klasik Cebirsel Yol)',
-            explanation: 'Paydaların en küçük ortak katını (EKOK = 6) bularak doğrudan toplama yapma yöntemi.',
+            methodTitle: '1. Yol: Bölük Tablosu Çizme Yöntemi',
+            explanation: 'Basamak tablosuna sayıları yazarak bölükleri doğrudan okuma.',
             steps: [
-              '(-2/3) kesrini 2 ile genişlet: (-4/6)',
-              'Payları topla: (-4 + 5) / 6 = 1/6',
-            ],
-          },
-          {
-            methodTitle: '2. Yol: Sayı Doğrusu Çizerek Gösterme (Görsel Yol)',
-            explanation: '0 noktasından başlayıp sayı doğrusu üzerinde sola ve sağa hareket ederek sonucu görme yöntemi.',
-            steps: [
-              '0 noktasından sola doğru 2/3 (yani 4/6 birim) git: -4/6 noktasına ulaşırsın.',
-              'Bulunduğun noktadan sağa doğru 5/6 birim ilerle.',
-              '+1/6 noktasına ulaşırsın.',
-            ],
-          },
-          {
-            methodTitle: '3. Yol: LGS Pratik Çapraz Çarpım Taktiği',
-            explanation: 'Hızlıca [(-2 x 6) + (5 x 3)] / (3 x 6) formülüyle tek adımda çözme taktiği.',
-            steps: [
-              'Pay = (-12 + 15) = 3',
-              'Payda = 3 x 6 = 18',
-              'Sadeleştir: 3/18 = 1/6',
+              'Milyonlar: 72',
+              'Binler: 400',
+              'Birler: 85 (Birler basamağı: 5)',
+              'Toplam: 72 + 5 = 77',
             ],
           },
         ],
-        goldenRule: 'Rasyonel sayılarda toplama ve çıkarmada paydalar eşitlenmeden paylar asla toplanmaz!',
+        goldenRule: '9 basamağa kadar olan doğal sayılarda sağdan sola üçerli gruplara BÖLÜK denir!',
       },
       {
         questionNumber: 2,
-        questionText:
-          'Bir su deposunun 3/5\'i doludur. Depoya 60 litre su eklendiğinde deponun 3/4\'ü dolmaktadır. Buna göre bu deponun tamamı kaç litre su alır?',
-        options: ['A) 300 L', 'B) 400 L', 'C) 450 L', 'D) 500 L'],
-        studentAnswer: 'A) 300 L',
-        correctAnswer: 'B) 400 L',
+        questionText: 'Ali bir hikâye kitabının 1. gün 2/7\'sini, 2. gün 3/14\'ünü okumuştur. Ali kitabın toplam kaçta kaçını okumuştur?',
+        options: ['A) 5/21', 'B) 7/14', 'C) 5/14', 'D) 1/7'],
+        studentAnswer: 'C) 5/14',
+        correctAnswer: 'B) 7/14',
         isCorrect: false,
-        topic: 'Rasyonel Sayı Problemleri',
+        topic: 'Kesirlerle Toplama İşlemi',
         teacherLesson:
-          'Sevgili öğrencim, bu soruda çok yaklaştın ama depoya eklenen 60 litrenin tüm deponun hangi kesir parçasına denk geldiğini hesaplarken hata yaptın. Depo 3/5\'ten 3/4\'e çıktığına göre bu iki kesrin farkı 60 litreye eşittir!',
+          'Dikkat canım öğrencim! Kesirlerde toplama yaparken paydaları toplamayız ve paydaları eşit olmayan kesirleri doğrudan toplayamayız! Önce 2/7 kesrini 2 ile genişletip paydasını 14 yapmalısın: (2x2)/(7x2) = 4/14. Ardından 4/14 + 3/14 = 7/14 (yani kitabın yarısı) olur.',
         stepByStepSolution: [
-          '1. Adım: Depodaki su miktarının artış kesrini bulalım: (3/4) - (3/5).',
-          '2. Adım: Paydaları 20\'de eşitleyelim: (15/20) - (12/20) = 3/20.',
-          '3. Adım: Demek ki deponun 3/20\'si 60 litredir.',
-          '4. Adım: Deponun 1/20\'si = 60 / 3 = 20 litre olur.',
-          '5. Adım: Deponun tamamı (20/20) = 20 x 20 = 400 litredir!',
+          '1. Adım: Paydalar 7 ve 14’tür. 14, 7’nin 2 katıdır. Bu yüzden 2/7 kesrini 2 ile genişletiriz.',
+          '2. Adım: (2 x 2) / (7 x 2) = 4/14.',
+          '3. Adım: Şimdi ortak paydada payları toplarız: 4/14 + 3/14 = 7/14.',
+          '4. Adım: 7/14 sadeleşirse 1/2 (yarısı) eder. Şıklarda 7/14 (B seçeneği) doğrudur.',
         ],
         alternativeSolutions: [
           {
-            methodTitle: '1. Yol: Denklem Kurarak Çözüm (Cebirsel Yol)',
-            explanation: 'Deponun tamamına "x" litre diyelim.',
+            methodTitle: '1. Yol: Model Çizerek Gösterme (Şekil Yolu)',
+            explanation: '14 eşit parçalı bir dikdörtgen çizerek 1. ve 2. gün okunan kısımları boyama.',
             steps: [
-              'İlk durumdaki su: (3/5)x',
-              'Su eklendikten sonra: (3/5)x + 60 = (3/4)x',
-              '60 = (3/4)x - (3/5)x = (15x - 12x)/20 = 3x/20',
-              '3x = 1200 => x = 400 Litre.',
-            ],
-          },
-          {
-            methodTitle: '2. Yol: Model / Kutu Çizme Yolu (Görsel Taktik)',
-            explanation: 'Paydalar 5 ve 4 olduğundan deponun tamamını 20 eşit kutudan oluşan bir dikdörtgen çizerek modelleyelim.',
-            steps: [
-              'Deponun tamamı = 20 eşit kutu.',
-              'Başlangıçta 3/5\'i dolu = 20\'nin 3/5\'i = 12 kutu dolu.',
-              'Son durumda 3/4\'ü dolu = 20\'nin 3/4\'ü = 15 kutu dolu.',
-              'Eklenen su = 15 - 12 = 3 kutu artış sağlamış.',
-              '3 kutu = 60 litre ise 1 kutu = 20 litredir.',
-              'Tamamı 20 kutu olduğundan = 20 x 20 = 400 Litre!',
-            ],
-          },
-          {
-            methodTitle: '3. Yol: LGS Ters İşlem ve Oran-Orantı Taktiği',
-            explanation: '3/20\'lik parçası 60 olan sayıyı ters işlemle bulma.',
-            steps: [
-              '60 litreyi pay olan 3\'e böl: 20 litre.',
-              'Bulunan değeri payda olan 20 ile çarp: 20 x 20 = 400 Litre.',
+              '14 parçalı bir şekil çiz.',
+              '1. gün için 2/7 = 4 parça boya.',
+              '2. gün için 3/14 = 3 parça daha boya.',
+              'Toplam boyalı parça = 4 + 3 = 7 parça. Kesir = 7/14!',
             ],
           },
         ],
         mistakeReason:
-          '3/4 ile 3/5 arasındaki farkı almadan sadece 3/5 üzerinden doğrudan oran kurmaya çalıştın.',
+          'Paydaları eşitlemeden payları topladın (2 + 3 = 5 dedin) fakat 2/7’yi genişletmeyi unuttun.',
         goldenRule:
-          'Artış veya azalış problemlerinde SON KESİR - İLK KESİR farkı, eklenen veya eksilen miktara eşittir!',
+          'Paydaları eşit olmayan kesirlerle toplama veya çıkarma yapılmaz; önce GENİŞLETME yapılarak paydalar eşitlenir!',
         practiceQuestion: {
-          question:
-            'Bir kitabın 2/7\'sini okuyan bir öğrenci 30 sayfa daha okusaydı kitabın yarısını (1/2) okumuş olacaktı. Kitabın tamamı kaç sayfadır?',
-          options: ['A) 105', 'B) 140', 'C) 175', 'D) 210'],
-          correctAnswer: 'B) 140',
-          explanation:
-            '(1/2) - (2/7) = (7/14) - (4/14) = 3/14. Kitabın 3/14\'ü 30 sayfa ise tamamı 30 / 3 * 14 = 140 sayfadır.',
+          question: 'Bir pastanın 1/3\'ünü Ayşe, 2/9\'unu Fatma yemiştir. İkisi toplam pastanın kaçta kaçını yemiştir?',
+          options: ['A) 3/12', 'B) 5/9', 'C) 3/9', 'D) 4/9'],
+          correctAnswer: 'B) 5/9',
+          explanation: '1/3 kesrini 3 ile genişletirsek 3/9 olur. 3/9 + 2/9 = 5/9.',
         },
       },
     ],
   },
   {
-    id: 'sample-8-lgs-math-ebob',
-    date: '13 Ekim 2026',
-    title: '8. Sınıf LGS Matematik - Çarpanlar ve Katlar: EBOB-EKOK Problemleri',
-    subject: 'Matematik',
-    gradeLevel: '8. Sınıf / LGS Hazırlık',
-    overallFeedback:
-      'LGS sınavında en çok soru çıkan konu olan Çarpanlar ve Katlar testini çözdün. Dikdörtgen bahçenin etrafına eşit aralıklarla ağaç dikme probleminde EBOB mantığını kavramak çok önemlidir. Çözüm yöntemlerini incele!',
-    imageUrl: createSampleWorksheetSVG(
-      'Çarpanlar ve Katlar (EBOB-EKOK)',
-      '8. Sınıf',
-      'Matematik',
-      [
-        {
-          q: 'Kenar uzunlukları 48 metre ve 60 metre olan dikdörtgen şeklindeki bir bahçenin köşelerine de gelmek şartıyla eşit aralıklarla ağaç dikilecektir. En az kaç ağaç gerekir?',
-          opts: ['14', '18', '20', '24'],
-          studentChoice: 'B',
-          correctChoice: 'B',
-        },
-      ]
-    ),
-    scoreSummary: {
-      totalQuestions: 1,
-      correctCount: 1,
-      incorrectCount: 0,
-      emptyCount: 0,
-      estimatedPercentage: 100,
-    },
-    questions: [
-      {
-        questionNumber: 1,
-        questionText:
-          'Kenar uzunlukları 48 metre ve 60 metre olan dikdörtgen şeklindeki bir arsanın etrafına, köşelerine de birer tane gelmek şartıyla eşit aralıklarla en az kaç ağaç dikilir?',
-        options: ['A) 14', 'B) 18', 'C) 20', 'D) 24'],
-        studentAnswer: 'B) 18',
-        correctAnswer: 'B) 18',
-        isCorrect: true,
-        topic: 'EBOB Problemleri (Ağaç Dikme)',
-        teacherLesson:
-          'Tebrik ederim! En az ağaç dikmek için iki ağaç arasındaki mesafenin olabildiğince büyük olması gerekir. Bunun için 48 ve 60\'ın En Büyük Ortak Bölenini (EBOB) aldın: EBOB(48, 60) = 12 metre. Çevre / 12 = 18 ağaç sonucunu tam buldun!',
-        stepByStepSolution: [
-          '1. Adım: En az ağaç için aralık maksimum olmalıdır. EBOB(48, 60) hesaplanır.',
-          '2. Adım: 48 = 12 x 4 ve 60 = 12 x 5 olduğundan EBOB(48, 60) = 12 metredir.',
-          '3. Adım: Dikdörtgenin çevresi = 2 x (48 + 60) = 2 x 108 = 216 metredir.',
-          '4. Adım: Ağaç Sayısı = Çevre / EBOB = 216 / 12 = 18 ağaç.',
-        ],
-        alternativeSolutions: [
-          {
-            methodTitle: '1. Yol: Çevre / EBOB Formülü (Klasik Yol)',
-            explanation: 'Dikdörtgen çevresini EBOB değerine bölerek doğrudan sonuca ulaşma yöntemi.',
-            steps: [
-              'EBOB(48, 60) = 12 metre aralık',
-              'Çevre = 2 x (48 + 60) = 216 m',
-              'Ağaç sayısı = 216 / 12 = 18 ağaç',
-            ],
-          },
-          {
-            methodTitle: '2. Yol: Kenar Başına Parça Sayılarını Toplama Yolu',
-            explanation: 'Her bir kenarda kaç aralık olduğunu hesaplayıp çevre boyunca toplama.',
-            steps: [
-              'Kısa kenardaki aralık sayısı: 48 / 12 = 4 aralık (2 kenar var: 4 x 2 = 8)',
-              'Uzun kenardaki aralık sayısı: 60 / 12 = 5 aralık (2 kenar var: 5 x 2 = 10)',
-              'Toplam ağaç = 8 + 10 = 18 ağaç!',
-            ],
-          },
-          {
-            methodTitle: '3. Yol: LGS Pratik Sadeleştirme Taktiği',
-            explanation: 'Sayıları EBOB\'a bölüp kenar oranlarını toplayıp 2 ile çarpma.',
-            steps: [
-              '48/12 = 4 ve 60/12 = 5',
-              'Kısa kenar + Uzun kenar oranı = 4 + 5 = 9',
-              'Çevre için 2 ile çarp: 9 x 2 = 18 ağaç!',
-            ],
-          },
-        ],
-        goldenRule:
-          'Büyük bir bütünü eşit parçalara bölme, şişeleme, paketleme ve eşit aralıklarla ağaç/direk dikme sorularında daima EBOB kullanılır!',
-      },
-    ],
-  },
-  {
-    id: 'sample-8-lgs-science-pressure',
-    date: '13 Ekim 2026',
-    title: '8. Sınıf LGS Fen Bilimleri - Katı ve Sıvı Basıncı Deneyleri',
+    id: 'sample-5-science-moon',
+    date: '14 Ekim 2026',
+    title: '5. Sınıf Fen Bilimleri - Güneş, Dünya ve Ay Ünitesi',
     subject: 'Fen Bilimleri',
-    gradeLevel: '8. Sınıf / LGS Hazırlık',
+    gradeLevel: '5. Sınıf',
     overallFeedback:
-      'LGS Fen Bilimleri dersinde katı basıncının ağırlıkla doğru orantılı, temas yüzey alanıyla ters orantılı olduğunu pekiştiren harika bir çalışma.',
+      '5. sınıf Fen Bilimleri dersinde Ay’ın evrelerini ve yüzey özelliklerini harika pekiştirdin!',
     imageUrl: createSampleWorksheetSVG(
-      'Katı ve Sıvı Basıncı',
-      '8. Sınıf',
+      'Güneş, Dünya ve Ay',
+      '5. Sınıf',
       'Fen Bilimleri',
       [
         {
-          q: 'Özdeş tuğlalar kullanılarak yapılan bir deneyde tuğlaların süngere batma miktarlarını karşılaştıran öğrenci hangi değişkeni araştırmaktadır?',
+          q: 'Ay’ın ana evreleri sırasıyla hangi seçenekte doğru verilmiştir?',
           opts: [
-            'Katı basıncının yüzey alanına bağlılığı',
-            'Sıvı basıncının yoğunluğa bağlılığı',
-            'Açık hava basıncının yüksekliğe bağlılığı',
-            'Gazların sıkıştırılabilirliği',
+            'Yeni Ay - İlk Dördün - Dolunay - Son Dördün',
+            'Dolunay - Yeni Ay - Son Dördün - İlk Dördün',
+            'İlk Dördün - Dolunay - Yeni Ay - Hilal',
+            'Yeni Ay - Dolunay - İlk Dördün - Şişkin Ay',
           ],
           studentChoice: 'A',
           correctChoice: 'A',
@@ -344,30 +223,26 @@ export const SAMPLE_HOMEWORKS: HomeworkAnalysisResult[] = [
     questions: [
       {
         questionNumber: 1,
-        questionText:
-          'Ağırlıkları eşit olan tuğlalar önce geniş yüzeyleri, ardından dar yüzeyleri sünger üzerine konulduğunda dar yüzeyin süngere daha fazla battığı gözleniyor. Bu deneyin bağımsız değişkeni ve ulaşılan sonuç nedir?',
+        questionText: 'Ay’ın ana evreleri sırasıyla hangi seçenekte doğru verilmiştir?',
         options: [
-          'A) Bağımsız değişken: Yüzey Alanı. Sonuç: Yüzey alanı azaldıkça katı basıncı artar.',
-          'B) Bağımsız değişken: Tuğla Ağırlığı. Sonuç: Ağırlık arttıkça basınç artar.',
-          'C) Bağımsız değişken: Süngerin cinsi. Sonuç: Basınç süngere bağlıdır.',
-          'D) Bağımsız değişken: Yer çekimi ivmesi. Sonuç: Basınç değişmez.',
+          'A) Yeni Ay - İlk Dördün - Dolunay - Son Dördün',
+          'B) Dolunay - Yeni Ay - Son Dördün - İlk Dördün',
+          'C) İlk Dördün - Dolunay - Yeni Ay - Hilal',
+          'D) Yeni Ay - Dolunay - İlk Dördün - Şişkin Ay',
         ],
-        studentAnswer:
-          'A) Bağımsız değişken: Yüzey Alanı. Sonuç: Yüzey alanı azaldıkça katı basıncı artar.',
-        correctAnswer:
-          'A) Bağımsız değişken: Yüzey Alanı. Sonuç: Yüzey alanı azaldıkça katı basıncı artar.',
+        studentAnswer: 'A) Yeni Ay - İlk Dördün - Dolunay - Son Dördün',
+        correctAnswer: 'A) Yeni Ay - İlk Dördün - Dolunay - Son Dördün',
         isCorrect: true,
-        topic: 'Katı Basıncı ve Deney Değişkenleri',
+        topic: 'Ay’ın Evreleri',
         teacherLesson:
-          'Tebrikler canım öğrencim! Deneyde bizim değiştirdiğimiz faktör "Temas Yüzey Alanı" olduğundan bağımsız değişkendir. Batma miktarı ise katı basıncının büyüklüğünü gösterir. Dar yüzeyde basınç daha büyük olmuştur!',
+          'Kusursuz cevap! Ay’ın 4 ana evresi vardır: Yeni Ay ile başlar, yaklaşık 1 hafta sonra İlk Dördün (D harfi), 1 hafta sonra Dolunay, 1 hafta sonra ise Son Dördün (Ters D harfi) evresi görülür.',
         stepByStepSolution: [
-          '1. Adım: Deneyde neyi değiştirdik? Tuğlanın yere temas eden yüzey alanını (Geniş vs Dar). Demek ki Bağımsız Değişken: Yüzey Alanı.',
-          '2. Adım: Neyi sabit tuttuk? Tuğlanın ağırlığını. (Kontrol edilen değişken).',
-          '3. Adım: Ne değişti? Süngere batma miktarı (yani Basınç). Demek ki Bağımlı Değişken: Katı Basıncı.',
-          '4. Adım: Sonuç: P = G / S formülüne göre yüzey alanı küçüldükçe basınç artar.',
+          '1. Yeni Ay: Ay, Güneş ile Dünya arasındadır; karanlık görünür.',
+          '2. İlk Dördün: Sağ yarısı aydınlık görünür (D harfi gibi).',
+          '3. Dolunay: Dünya’ya bakan yüzü tamamen aydınlıktır.',
+          '4. Son Dördün: Sol yarısı aydınlık görünür (Ters D harfi gibi).',
         ],
-        goldenRule:
-          'Katı basıncında: Katı Basıncı = Ağırlık / Yüzey Alanı. Kar ayakkabısı ve iş makinelerinin paleti yüzeyi artırıp basıncı AZALTMAK için tasarlanmıştır!',
+        goldenRule: 'Ay’ın iki ana evresi arasındaki süre yaklaşık 1 HAFTADIR (7 gündür)!',
       },
     ],
   },

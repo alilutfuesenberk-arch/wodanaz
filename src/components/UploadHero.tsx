@@ -32,11 +32,7 @@ interface UploadHeroProps {
 }
 
 const GRADES = [
-  'Tüm Ortaokul (Otomatik 5-8. Sınıf)',
-  '5. Sınıf',
-  '6. Sınıf',
-  '7. Sınıf',
-  '8. Sınıf / LGS Hazırlık',
+  '5. Sınıf (MEB Müfredatı)',
 ];
 
 const SUBJECTS = [
@@ -44,7 +40,7 @@ const SUBJECTS = [
   'Matematik',
   'Fen Bilimleri',
   'Türkçe',
-  'Sosyal Bilgiler / İnkılap',
+  'Sosyal Bilgiler',
   'İngilizce',
   'Din Kültürü',
 ];
@@ -274,7 +270,7 @@ export const UploadHero: React.FC<UploadHeroProps> = ({
             </div>
             <div>
               <h5 className="font-bold text-xs text-slate-900">Çalışma Odası</h5>
-              <p className="text-2xs text-slate-500">Odaklan & 1:1 oyun kazan</p>
+              <p className="text-2xs text-slate-500">Odaklan & 3:1 oyun kazan</p>
             </div>
           </div>
         )}

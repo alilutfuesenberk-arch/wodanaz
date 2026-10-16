@@ -86,12 +86,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   Ödev Dostum
                 </h1>
-                <span className="text-2xs font-black px-2 py-0.5 rounded-lg bg-purple-100 text-purple-900 border border-purple-200 uppercase tracking-wider">
-                  MEB Ortaokul & LGS
+                <span className="text-2xs font-bold px-2 py-0.5 rounded-lg bg-purple-100 text-purple-900 border border-purple-200 uppercase tracking-wider">
+                  MEB 5. Sınıf
                 </span>
               </div>
               <p className="text-2xs sm:text-xs text-slate-500 font-semibold leading-snug">
-                Akıllı ve Sevecen Ortaokul Başarı ve Çalışma Rehberi
+                5. Sınıf Öğrencileri İçin Akıllı Başarı ve Çalışma Rehberi
               </p>
             </div>
           </div>
@@ -212,10 +212,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <CalendarDays className="w-4 h-4 shrink-0" />
-            <span className="truncate">Haftalık Danışman</span>
+            <span className="truncate">Haftalık Danışmanım</span>
           </button>
 
-          {/* TAB 3: TEST SONUÇLARI KONTROLÜ */}
+          {/* TAB 3: TEST UZMANI */}
           <button
             onClick={() => {
               soundFX.playPop();
@@ -228,7 +228,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <FileCheck className="w-4 h-4 shrink-0" />
-            <span className="truncate">Test Sonuçları Kontrolü</span>
+            <span className="truncate">Test Uzmanı</span>
           </button>
         </div>
 
@@ -253,7 +253,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </span>
 
                     <span className="text-3xs font-extrabold px-1.5 py-0.2 rounded bg-orange-200/80 text-orange-900">
-                      1 Dk Ders = 1 Dk Oyun
+                      3 Dk Ders = 1 Dk Oyun (3:1 Zorlayıcı Oran)
                     </span>
                   </div>
 

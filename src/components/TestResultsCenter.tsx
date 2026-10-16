@@ -62,8 +62,8 @@ export const TestResultsCenter: React.FC<TestResultsCenterProps> = ({
   setSelectedSubject,
   onBackToMain,
 }) => {
-  // Sub-tabs inside Test Results: 'upload' | 'history_and_badges' | 'game_bank'
-  const [subTab, setSubTab] = useState<'upload' | 'history_and_badges' | 'game_bank'>('upload');
+  // Sub-tabs inside Test Results: 'upload' | 'history'
+  const [subTab, setSubTab] = useState<'upload' | 'history'>('upload');
   const [badgeFilter, setBadgeFilter] = useState<'all' | 'unlocked' | 'locked'>('all');
 
   const achievements = calculateAchievements(history, stars);
@@ -89,7 +89,7 @@ export const TestResultsCenter: React.FC<TestResultsCenterProps> = ({
             className="px-3.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-900 border border-purple-200 text-xs sm:text-sm font-extrabold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs hover:scale-101"
           >
             <ArrowLeft className="w-4 h-4 text-purple-700" />
-            <span>← Test Sonuçları Listesine / Yeni Test Yüklemeye Dön</span>
+            <span>← Test Uzmanına / Yeni Test Yüklemeye Dön</span>
           </button>
 
           <div className="flex items-center gap-2">
@@ -113,7 +113,7 @@ export const TestResultsCenter: React.FC<TestResultsCenterProps> = ({
           history={history}
           onReset={() => setActiveHomework(null)}
           onEarnStar={onEarnStar}
-          onOpenAchievements={() => setSubTab('history_and_badges')}
+          onOpenAchievements={() => setSubTab('history')}
           onOpenGameBank={onOpenGameBank}
         />
       </div>
@@ -142,11 +142,14 @@ export const TestResultsCenter: React.FC<TestResultsCenterProps> = ({
               📝
             </div>
             <div>
-              <h2 className="font-black text-lg sm:text-xl text-slate-900 leading-tight">
-                Test Sonuçları Kontrolü
+              <h2
+                style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
+                className="font-bold text-lg sm:text-xl text-slate-900 leading-tight"
+              >
+                Test Uzmanı
               </h2>
               <p className="text-2xs sm:text-xs text-slate-500 font-semibold">
-                MEB Deneme & Ödev İnceleme, Soru Analizi ve Başarı Karnesi
+                MEB 5. Sınıf Deneme & Ödev İnceleme, Soru Analizi ve Kazanım Karnesi
               </p>
             </div>
           </div>
@@ -164,7 +167,7 @@ export const TestResultsCenter: React.FC<TestResultsCenterProps> = ({
           </div>
         </div>
 
-        {/* 3 Unified Sub-Tabs */}
+        {/* 2 Focused Sub-Tabs */}
         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-purple-100">
           <button
             onClick={() => {
@@ -184,31 +187,16 @@ export const TestResultsCenter: React.FC<TestResultsCenterProps> = ({
           <button
             onClick={() => {
               soundFX.playPop();
-              setSubTab('history_and_badges');
+              setSubTab('history');
             }}
             className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer flex items-center gap-2 ${
-              subTab === 'history_and_badges'
+              subTab === 'history'
                 ? 'bg-purple-600 text-white shadow-xs scale-102'
                 : 'bg-slate-100 hover:bg-purple-50 text-slate-700 hover:text-purple-900'
             }`}
           >
             <BookOpen className="w-4 h-4" />
-            <span>Geçmiş Testlerim & Karnelerim & Rozetler</span>
-          </button>
-
-          <button
-            onClick={() => {
-              soundFX.playPop();
-              setSubTab('game_bank');
-            }}
-            className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer flex items-center gap-2 ${
-              subTab === 'game_bank'
-                ? 'bg-orange-500 text-white shadow-xs scale-102'
-                : 'bg-slate-100 hover:bg-orange-50 text-slate-700 hover:text-orange-950'
-            }`}
-          >
-            <Gamepad2 className="w-4 h-4" />
-            <span>Kumbara & Puan Durumu</span>
+            <span>Test Geçmişi</span>
           </button>
         </div>
       </div>
@@ -220,7 +208,7 @@ export const TestResultsCenter: React.FC<TestResultsCenterProps> = ({
             onStartCamera={onStartCamera}
             onFileSelect={onFileSelect}
             onSelectSample={onSelectSample}
-            onOpenAchievements={() => setSubTab('history_and_badges')}
+            onOpenAchievements={() => setSubTab('history')}
             onOpenGameBank={onOpenGameBank}
             onOpenStudyRoom={onOpenStudyRoom}
             selectedGrade={selectedGrade}
@@ -231,8 +219,8 @@ export const TestResultsCenter: React.FC<TestResultsCenterProps> = ({
         </div>
       )}
 
-      {/* SUB-TAB 2: GEÇMİŞ TESTLERİM, KARNELERİM & ROZETLER (BİRLEŞİK SADE ALAN) */}
-      {subTab === 'history_and_badges' && (
+      {/* SUB-TAB 2: TEST GEÇMİŞİ */}
+      {subTab === 'history' && (
         <div className="space-y-6">
           {/* Back button to Upload view */}
           <div className="flex items-center justify-between">
@@ -268,11 +256,11 @@ export const TestResultsCenter: React.FC<TestResultsCenterProps> = ({
               <div className="flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-purple-600" />
                 <h3 className="font-extrabold text-base text-slate-900">
-                  Ödev ve Deneme Karnelerim
+                  Test Geçmişi
                 </h3>
               </div>
               <span className="text-2xs font-semibold text-slate-500">
-                Tıkla ve ayrıntılı analizi incele
+                Geçmiş test analizlerin, karnelerin ve başarı rozetlerin
               </span>
             </div>
 
@@ -421,54 +409,6 @@ export const TestResultsCenter: React.FC<TestResultsCenterProps> = ({
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* SUB-TAB 3: OYUN KUMBARASI & PUAN DURUMU */}
-      {subTab === 'game_bank' && (
-        <div className="bg-white rounded-3xl p-5 sm:p-6 border border-purple-200 shadow-2xs space-y-4">
-          <div className="flex items-center justify-between border-b border-purple-100 pb-3">
-            <button
-              onClick={() => {
-                soundFX.playPop();
-                setSubTab('upload');
-              }}
-              className="px-3 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-900 border border-purple-200 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>← Test Sonuçlarına Dön</span>
-            </button>
-
-            <button
-              onClick={() => {
-                soundFX.playPop();
-                onOpenGameBank();
-              }}
-              className="px-3 py-1.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-xs font-extrabold transition-colors cursor-pointer shadow-xs"
-            >
-              🎮 Kumbarayı Tam Aç
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200 text-orange-950 space-y-1">
-              <span className="text-3xs font-extrabold uppercase text-orange-700">Kalan Oyun Süren</span>
-              <div className="text-2xl font-black">{availableGameMinutes} Dakika</div>
-              <p className="text-3xs text-orange-800">1 dakika ders çalışma = 1 dakika oyun hakkı</p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-purple-50 border border-purple-200 text-purple-950 space-y-1">
-              <span className="text-3xs font-extrabold uppercase text-purple-700">Başarı Yıldızların</span>
-              <div className="text-2xl font-black">{stars} Yıldız</div>
-              <p className="text-3xs text-purple-800">Doğru çözülen sorular ve çalışmalarla kazanıldı</p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-950 space-y-1">
-              <span className="text-3xs font-extrabold uppercase text-emerald-700">Kural Eşitliği</span>
-              <div className="text-2xl font-black">1 : 1 Oran</div>
-              <p className="text-3xs text-emerald-800">2 saat ders çalış = 120 dakika oyun hakkı kazan!</p>
             </div>
           </div>
         </div>
