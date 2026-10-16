@@ -1,0 +1,6 @@
+{
+  "name": "Ödev Dostum - Akıllı Ödev ve Test Öğretmeni",
+  "description": "Çocukların ödev ve test fotoğraflarını inceleyip doğru çözümleri veren ve yanlışları eğlenceli, ders tadında sesli ve adımlı anlatan akıllı öğretmen.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
